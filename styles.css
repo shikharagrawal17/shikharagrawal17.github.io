@@ -121,17 +121,17 @@ body.terminal-body {
   padding: 0 16px;
 }
 
-.command-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
 .terminal-command-bar .terminal-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.command-left {
+  display: flex;
+  align-items: center;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -418,99 +418,7 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   4. EXPERIENCE LOGS
-   ------------------------------------------------------------- */
-.log-entry {
-  background: #060708;
-  border: 1px solid var(--bbg-border);
-  border-radius: 4px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.log-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  border-bottom: 1px solid #111418;
-  padding-bottom: 10px;
-}
-.role-badge {
-  color: var(--bbg-green);
-  font-size: 10px;
-  font-weight: 700;
-}
-.role-badge-sub {
-  color: var(--bbg-cyan);
-  font-size: 10px;
-  font-weight: 700;
-}
-.log-role {
-  font-size: 15px;
-  color: #fff;
-  font-weight: 700;
-}
-.log-inst {
-  font-size: 12px;
-  color: var(--bbg-amber);
-}
-.log-period {
-  font-size: 11px;
-  color: var(--text-muted);
-  background: #111418;
-  padding: 3px 8px;
-  border-radius: 3px;
-  border: 1px solid var(--bbg-border);
-  white-space: nowrap;
-}
-
-.log-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.log-box {
-  background: #0b0d10;
-  border: 1px solid #15191e;
-  padding: 12px;
-  border-radius: 3px;
-}
-.box-title {
-  color: #fff;
-  font-weight: 700;
-  font-size: 12px;
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.box-title svg { color: var(--bbg-amber); }
-.log-box p {
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.log-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  border-top: 1px solid #111418;
-  padding-top: 10px;
-}
-.tech-pill {
-  background: #111418;
-  border: 1px solid #1c222b;
-  color: #94a3b8;
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 2px;
-}
-
-/* -------------------------------------------------------------
-   5. INTERACTIVE MBS SIMULATOR
+   4. INTERACTIVE MBS SIMULATOR
    ------------------------------------------------------------- */
 .simulator-controls {
   background: #060708;
@@ -578,7 +486,7 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   6. PROJECTS GRID (BLOOMBERG TILES)
+   5. PROJECTS GRID (BLOOMBERG TILES)
    ------------------------------------------------------------- */
 .projects-grid-bbg {
   display: grid;
@@ -662,7 +570,7 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   7. SKILLS MATRIX
+   6. SKILLS MATRIX
    ------------------------------------------------------------- */
 .matrix-grid {
   display: grid;
@@ -705,7 +613,7 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   8. BUTTONS & FOOTER
+   7. BUTTONS & FOOTER
    ------------------------------------------------------------- */
 .btn-bbg {
   display: inline-flex;
@@ -785,7 +693,6 @@ body.terminal-body {
   .grid-2col { grid-template-columns: 1fr; }
   .projects-grid-bbg { grid-template-columns: 1fr; }
   .matrix-grid { grid-template-columns: 1fr 1fr; }
-  .log-grid { grid-template-columns: 1fr; }
   .cmd-box { width: 100%; }
 }
 @media (max-width: 600px) {

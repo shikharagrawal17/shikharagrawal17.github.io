@@ -24,62 +24,78 @@
 
 <body class="terminal-body font-mono selection:bg-amber-500 selection:text-black">
 
-  <!-- 1. BLOOMBERG TICKER TAPE (REAL-TIME FINANCIAL STREAM) -->
-  <div class="ticker-wrap" id="top-ticker">
-    <div class="ticker-header-tag">
-      <span class="pulse-dot"></span> LIVE FEED // MARKETS & RATES
-    </div>
-    <div class="ticker-content" id="ticker-strip">
-      <!-- Live Financial Items -->
-      <span class="ticker-item"><span class="ticker-sym">NIFTY 50</span> <span class="val">25,356</span> <span class="up">▲ +0.42%</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">USD/INR</span> <span class="val">86.42</span> <span class="up">▲ +0.14%</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">EUR/USD</span> <span class="val">1.0845</span> <span class="down">▼ -0.08%</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">US 10Y YIELD</span> <span class="val">4.285%</span> <span class="up">▲ +2.4 bps</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">30Y MBS YIELD</span> <span class="val">6.820%</span> <span class="down">▼ -1.8 bps</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">SOFR FIXING</span> <span class="val">5.310%</span> <span class="neutral">● 0.0 bps</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">MF-ANALYZER</span> <span class="val">LOCAL CAS</span> <span class="highlight">SQLITE PARSER</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">BHARAT DUES</span> <span class="val">SHARED LEDGER</span> <span class="highlight">UPI SETTLEMENT</span></span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><span class="ticker-sym">PYQUADTREE</span> <span class="val">C EXTENSION</span> <span class="highlight">O(log N) SPATIAL</span></span>
-    </div>
-  </div>
-
-  <!-- 2. BLOOMBERG TERMINAL COMMAND & FUNCTION BAR -->
-  <header class="terminal-command-bar">
-    <div class="terminal-container">
-      
-      <div class="command-left">
-        <div class="terminal-logo">
-          <span class="bbg-tag">BBG</span>
-          <span class="terminal-title">SHIKHAR // TERMINAL v4.2</span>
-        </div>
-        
-        <!-- Interactive Bloomberg Command Line -->
-        <div class="cmd-box">
-          <span class="cmd-prompt">&gt;</span>
-          <input type="text" id="terminal-cmd-input" placeholder="Type PROJECTS, MBS, MF, SETTLE, CFA or HELP then <GO>" autocomplete="off" />
-          <button id="terminal-go-btn" class="btn-go">&lt;GO&gt;</button>
+  <!-- 1. FIXED BLOOMBERG TERMINAL HEADER STACK -->
+  <header class="fixed-terminal-header">
+    
+    <!-- 1.1 TICKER TAPE (REAL-TIME FINANCIAL STREAM) -->
+    <div class="ticker-wrap" id="top-ticker">
+      <div class="ticker-header-tag">
+        <span class="pulse-dot"></span> LIVE FEED // MARKETS
+      </div>
+      <div class="ticker-track">
+        <div class="ticker-content" id="ticker-strip">
+          <!-- Live Financial Items -->
+          <span class="ticker-item"><span class="ticker-sym">NIFTY 50</span> <span class="val">25,356</span> <span class="up">▲ +0.42%</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">USD/INR</span> <span class="val">86.42</span> <span class="up">▲ +0.14%</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">EUR/USD</span> <span class="val">1.0845</span> <span class="down">▼ -0.08%</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">US 10Y YIELD</span> <span class="val">4.285%</span> <span class="up">▲ +2.4 bps</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">30Y MBS YIELD</span> <span class="val">6.820%</span> <span class="down">▼ -1.8 bps</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">SOFR FIXING</span> <span class="val">5.310%</span> <span class="neutral">● 0.0 bps</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">MF-ANALYZER</span> <span class="val">LOCAL CAS</span> <span class="highlight">SQLITE PARSER</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">BHARAT DUES</span> <span class="val">SHARED LEDGER</span> <span class="highlight">UPI SETTLEMENT</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">PYQUADTREE</span> <span class="val">C EXTENSION</span> <span class="highlight">O(log N) SPATIAL</span></span>
+          <span class="ticker-sep">|</span>
+          <!-- Duplicate items for seamless continuous ticker loop -->
+          <span class="ticker-item"><span class="ticker-sym">NIFTY 50</span> <span class="val">25,356</span> <span class="up">▲ +0.42%</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">USD/INR</span> <span class="val">86.42</span> <span class="up">▲ +0.14%</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">EUR/USD</span> <span class="val">1.0845</span> <span class="down">▼ -0.08%</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">US 10Y YIELD</span> <span class="val">4.285%</span> <span class="up">▲ +2.4 bps</span></span>
         </div>
       </div>
-
-      <!-- Quick Function Keys (F1 - F6) -->
-      <nav class="function-keys">
-        <a href="#about" class="f-key" data-cmd="ABOUT"><span class="k">F1</span> ABOUT</a>
-        <a href="#projects" class="f-key" data-cmd="PROJECTS"><span class="k">F2</span> OPEN SOURCE</a>
-        <a href="#mbs-lab" class="f-key" data-cmd="MBS"><span class="k">F3</span> MBS LAB</a>
-        <a href="#skills" class="f-key" data-cmd="STACK"><span class="k">F4</span> STACK</a>
-        <a href="#education" class="f-key" data-cmd="CFA"><span class="k">F5</span> CFA/EDU</a>
-        <a href="#contact" class="f-key" data-cmd="MSG"><span class="k">F6</span> MSG &lt;GO&gt;</a>
-      </nav>
-
     </div>
+
+    <!-- 1.2 BLOOMBERG COMMAND & FUNCTION BAR -->
+    <div class="terminal-command-bar">
+      <div class="terminal-container command-bar-inner">
+        
+        <div class="command-left">
+          <a href="#about" class="terminal-logo">
+            <span class="bbg-tag">BBG</span>
+            <span class="terminal-title">SHIKHAR // TERMINAL v4.2</span>
+          </a>
+          
+          <!-- Interactive Bloomberg Command Line -->
+          <div class="cmd-box">
+            <span class="cmd-prompt">&gt;</span>
+            <input type="text" id="terminal-cmd-input" placeholder="Type PROJECTS, MBS, MF, SETTLE, CFA or HELP then <GO>" autocomplete="off" />
+            <button id="terminal-go-btn" class="btn-go">&lt;GO&gt;</button>
+          </div>
+        </div>
+
+        <!-- Quick Function Keys (F1 - F6) -->
+        <nav class="function-keys">
+          <a href="#about" class="f-key" data-cmd="ABOUT"><span class="k">F1</span> ABOUT</a>
+          <a href="#projects" class="f-key" data-cmd="PROJECTS"><span class="k">F2</span> OPEN SOURCE</a>
+          <a href="#mbs-lab" class="f-key" data-cmd="MBS"><span class="k">F3</span> MBS LAB</a>
+          <a href="#skills" class="f-key" data-cmd="STACK"><span class="k">F4</span> STACK</a>
+          <a href="#education" class="f-key" data-cmd="CFA"><span class="k">F5</span> CFA/EDU</a>
+          <a href="#contact" class="f-key" data-cmd="MSG"><span class="k">F6</span> MSG &lt;GO&gt;</a>
+        </nav>
+
+      </div>
+    </div>
+
   </header>
 
   <!-- 3. MAIN TERMINAL WORKSTATION CONTAINER -->

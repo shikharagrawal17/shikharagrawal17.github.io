@@ -19,7 +19,831 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+/* ==========================================================================
+   BLOOMBERG TERMINAL & FINANCIAL SYSTEMS THEME — COMPLETE & ROBUST
+   ========================================================================== */
+
+:root {
+  --bbg-black: #000000;
+  --bbg-dark: #08090a;
+  --bbg-card: #0d0f12;
+  --bbg-border: #1a1e24;
+  --bbg-border-highlight: #ff9900;
+  
+  --bbg-amber: #ff9900;
+  --bbg-amber-subtle: rgba(255, 153, 0, 0.15);
+  --bbg-green: #00d26a;
+  --bbg-cyan: #00b4d8;
+  --bbg-red: #ff4d4d;
+  
+  --text-main: #e2e8f0;
+  --text-muted: #8e9bb0;
+  --text-dim: #4a5568;
+
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.terminal-body {
+  background-color: var(--bbg-black);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -------------------------------------------------------------
+   1. FIXED HEADER STACK (TICKER + COMMAND BAR)
+   ------------------------------------------------------------- */
+.fixed-terminal-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bbg-black);
+  border-bottom: 1px solid var(--bbg-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+/* 1.1 Ticker Tape with Static Left Header & Track */
+.ticker-wrap {
+  height: 32px;
+  background: #050607;
+  border-bottom: 1px solid #14181f;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-size: 11px;
+}
+
+.ticker-header-tag {
+  background: #111418;
+  color: var(--bbg-amber);
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  border-right: 2px solid var(--bbg-border);
+  flex-shrink: 0;
+  z-index: 10;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.8);
+}
+
+.ticker-track {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.ticker-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+  animation: ticker-slide 35s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track:hover .ticker-content {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-slide {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.ticker-sym { color: #fff; font-weight: 600; margin-right: 4px; }
+.ticker-sep { color: var(--text-dim); }
+.val { color: var(--text-main); }
+.up { color: var(--bbg-green); font-weight: 600; }
+.down { color: var(--bbg-red); font-weight: 600; }
+.neutral { color: var(--text-muted); }
+.highlight { color: var(--bbg-cyan); font-weight: 600; }
+.amber-text { color: var(--bbg-amber); }
+.green { color: var(--bbg-green); }
+.red-text { color: var(--bbg-red); }
+
+/* 1.2 Command Bar & Function Keys */
+.terminal-command-bar {
+  background: rgba(8, 9, 10, 0.98);
+  padding: 10px 0;
+}
+
+.terminal-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.command-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.command-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.terminal-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.bbg-tag {
+  background: var(--bbg-amber);
+  color: #000;
+  font-weight: 800;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+.terminal-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+}
+
+.cmd-box {
+  display: flex;
+  align-items: center;
+  background: #000;
+  border: 1px solid var(--bbg-amber);
+  border-radius: 4px;
+  padding: 3px 6px 3px 10px;
+  min-width: 280px;
+  max-width: 420px;
+  flex: 1;
+}
+.cmd-prompt {
+  color: var(--bbg-amber);
+  font-weight: 700;
+  margin-right: 8px;
+}
+.cmd-box input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  width: 100%;
+  outline: none;
+}
+.cmd-box input::placeholder {
+  color: var(--text-dim);
+}
+.btn-go {
+  background: var(--bbg-amber);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.btn-go:hover {
+  opacity: 0.85;
+}
+
+.function-keys {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.f-key {
+  background: #111418;
+  border: 1px solid var(--bbg-border);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+.f-key .k {
+  color: var(--bbg-amber);
+  font-weight: 700;
+}
+.f-key:hover {
+  border-color: var(--bbg-amber);
+  color: #fff;
+  background: #1a1e24;
+}
+
+/* -------------------------------------------------------------
+   2. MAIN WORKSTATION & SECTION MARGINS
+   ------------------------------------------------------------- */
+.main-workstation {
+  padding-top: 130px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.terminal-window {
+  background: var(--bbg-card);
+  border: 1px solid var(--bbg-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+  scroll-margin-top: 120px;
+}
+
+.window-header {
+  background: #090b0e;
+  border-bottom: 1px solid var(--bbg-border);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.window-title {
+  color: var(--bbg-amber);
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.05em;
+}
+.window-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge-status {
+  background: rgba(0, 210, 106, 0.1);
+  color: var(--bbg-green);
+  border: 1px solid rgba(0, 210, 106, 0.3);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.badge-tag {
+  background: #15191e;
+  color: var(--bbg-cyan);
+  border: 1px solid var(--bbg-border);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.window-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bbg-green);
+}
+
+.window-body {
+  padding: 24px;
+}
+
+/* -------------------------------------------------------------
+   3. DESK 01: HERO & TELEMETRY
+   ------------------------------------------------------------- */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+}
+
+.profile-tag {
+  color: var(--bbg-cyan);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.terminal-headline {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.terminal-sub {
+  font-size: 13.5px;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+.terminal-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.command-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 12px;
+}
+.chip-cmd {
+  background: #111418;
+  border: 1px solid var(--bbg-border);
+  color: var(--bbg-amber);
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip-cmd:hover {
+  background: var(--bbg-amber);
+  color: #000;
+  font-weight: 700;
+}
+
+.telemetry-panel {
+  background: #060708;
+  border: 1px solid var(--bbg-border);
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+.telemetry-header {
+  font-size: 11px;
+  color: var(--bbg-amber);
+  font-weight: 700;
+  border-bottom: 1px solid var(--bbg-border);
+  padding-bottom: 8px;
+}
+.telemetry-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.telemetry-table tr {
+  border-bottom: 1px solid #111418;
+}
+.telemetry-table td {
+  padding: 6px 0;
+}
+.telemetry-table .lbl {
+  color: var(--text-muted);
+}
+.telemetry-table .val {
+  text-align: right;
+  font-weight: 600;
+}
+
+.telemetry-footer {
+  display: flex;
+  gap: 8px;
+  padding-top: 6px;
+}
+.tbl-btn {
+  flex: 1;
+  background: #111418;
+  border: 1px solid var(--bbg-border);
+  color: var(--text-main);
+  padding: 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tbl-btn:hover {
+  border-color: var(--bbg-amber);
+  color: #fff;
+}
+.tbl-btn svg { width: 13px; height: 13px; }
+.btn-highlight {
+  border-color: var(--bbg-amber);
+  color: var(--bbg-amber);
+}
+
+/* -------------------------------------------------------------
+   4. DESK 02: PRODUCTION EXPERIENCE LOGS
+   ------------------------------------------------------------- */
+.log-entry {
+  background: #060708;
+  border: 1px solid var(--bbg-border);
+  border-radius: 4px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid #111418;
+  padding-bottom: 12px;
+}
+.role-badge {
+  color: var(--bbg-green);
+  font-size: 10px;
+  font-weight: 700;
+}
+.role-badge-sub {
+  color: var(--bbg-cyan);
+  font-size: 10px;
+  font-weight: 700;
+}
+.log-role {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 700;
+}
+.log-inst {
+  font-size: 12px;
+  color: var(--bbg-amber);
+}
+.log-period {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: #111418;
+  padding: 3px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--bbg-border);
+  white-space: nowrap;
+}
+
+.log-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.log-box {
+  background: #0b0d10;
+  border: 1px solid #15191e;
+  padding: 14px;
+  border-radius: 3px;
+}
+.box-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.box-title svg { color: var(--bbg-amber); }
+.log-box p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.log-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid #111418;
+  padding-top: 10px;
+}
+.tech-pill {
+  background: #111418;
+  border: 1px solid #1c222b;
+  color: #94a3b8;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* -------------------------------------------------------------
+   5. DESK 03: OPEN SOURCE REPOSITORIES GRID
+   ------------------------------------------------------------- */
+.projects-grid-bbg {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+.p-card {
+  background: #060708;
+  border: 1px solid var(--bbg-border);
+  border-radius: 4px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.p-card:hover {
+  border-color: var(--bbg-amber);
+  transform: translateY(-2px);
+}
+.p-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.p-category {
+  color: var(--bbg-amber);
+  font-size: 10px;
+  font-weight: 700;
+}
+.p-icon-link {
+  color: var(--text-muted);
+  transition: color 0.15s;
+}
+.p-icon-link:hover { color: #fff; }
+.p-icon-link svg { width: 16px; height: 16px; }
+
+.p-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+}
+.p-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.p-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  border-top: 1px solid #111418;
+  padding-top: 10px;
+}
+.p-tags span {
+  font-size: 9.5px;
+  background: #111418;
+  color: #8e9bb0;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.p-footer-link {
+  margin-top: 4px;
+}
+.repo-link {
+  color: var(--bbg-amber);
+  font-size: 10.5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.repo-link:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* -------------------------------------------------------------
+   6. DESK 04: INTERACTIVE MBS SIMULATOR
+   ------------------------------------------------------------- */
+.simulator-controls {
+  background: #060708;
+  border: 1px solid var(--bbg-border);
+  padding: 16px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.slider-readout {
+  color: var(--bbg-amber);
+  font-weight: 700;
+  font-size: 12px;
+}
+.terminal-slider {
+  width: 100%;
+  accent-color: var(--bbg-amber);
+  cursor: pointer;
+  height: 6px;
+}
+.slider-marks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+
+.mbs-output-box {
+  background: #060708;
+  border: 1px solid var(--bbg-border);
+  padding: 16px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.box-header-sm {
+  font-size: 11px;
+  color: var(--bbg-cyan);
+  font-weight: 700;
+  border-bottom: 1px solid #15191e;
+  padding-bottom: 6px;
+}
+.metrics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.m-card {
+  background: #0b0d10;
+  border: 1px solid #15191e;
+  padding: 10px;
+  border-radius: 3px;
+}
+.m-lbl { font-size: 9.5px; color: var(--text-muted); }
+.m-val { font-size: 16px; font-weight: 800; margin: 2px 0; }
+.m-sub { font-size: 9px; color: var(--text-dim); }
+.model-note {
+  background: #0b0d10;
+  border-left: 2px solid var(--bbg-amber);
+  padding: 8px 12px;
+}
+
+/* -------------------------------------------------------------
+   7. DESK 05: SKILLS MATRIX
+   ------------------------------------------------------------- */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.matrix-col {
+  background: #060708;
+  border: 1px solid var(--bbg-border);
+  padding: 14px;
+  border-radius: 4px;
+}
+.m-col-title {
+  font-size: 11px;
+  color: var(--bbg-amber);
+  font-weight: 700;
+  border-bottom: 1px solid #15191e;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+.m-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.m-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: var(--text-main);
+}
+.tag-sm {
+  font-size: 9.5px;
+  background: #111418;
+  color: var(--bbg-cyan);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+/* -------------------------------------------------------------
+   8. BUTTONS & FOOTER STATUS STRIP
+   ------------------------------------------------------------- */
+.btn-bbg {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.btn-primary {
+  background: var(--bbg-amber);
+  color: #000;
+}
+.btn-sec {
+  background: #111418;
+  color: #fff;
+  border: 1px solid var(--bbg-border);
+}
+.btn-bbg:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.btn-bbg svg { width: 15px; height: 15px; }
+
+.link-action {
+  color: var(--bbg-amber);
+  font-size: 11px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+}
+.link-action:hover { text-decoration: underline; }
+
+.terminal-footer {
+  border-top: 1px solid var(--bbg-border);
+  background: #050607;
+  padding: 12px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.terminal-toast {
+  position: fixed;
+  bottom: 52px;
+  right: 20px;
+  background: #0d0f12;
+  border: 1px solid var(--bbg-amber);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: none;
+  z-index: 2000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bbg-green);
+  display: inline-block;
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.5rem; }
+.space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
+.space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+.space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+
+/* -------------------------------------------------------------
+   9. RESPONSIVENESS
+   ------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .main-workstation { padding-top: 160px; }
+  .grid-2col { grid-template-columns: 1fr; }
+  .log-grid { grid-template-columns: 1fr; }
+  .cmd-box { min-width: 100%; }
+}
+@media (max-width: 650px) {
+  .function-keys { display: none; }
+  .main-workstation { padding-top: 140px; }
+  .terminal-headline { font-size: 26px; }
+}
+
+</style>
 </head>
 
 <body class="terminal-body font-mono selection:bg-amber-500 selection:text-black">

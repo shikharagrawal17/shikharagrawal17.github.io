@@ -643,6 +643,24 @@ body.terminal-body {
   border-radius: 2px;
 }
 
+.p-footer-link {
+  margin-top: 4px;
+}
+.repo-link {
+  color: var(--bbg-amber);
+  font-size: 10px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.repo-link:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
 /* -------------------------------------------------------------
    7. SKILLS MATRIX
    ------------------------------------------------------------- */

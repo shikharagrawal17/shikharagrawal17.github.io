@@ -1,7 +1,5 @@
 /* ==========================================================================
-   BLOOMBERG TERMINAL & FINANCIAL SYSTEMS THEME — ROBUST & ROCK-SOLID
-   Colors: Bloomberg Carbon (#000000 / #0a0b0d), Amber (#ff9900), 
-           FX Green (#00d26a), Rates Cyan (#00b4d8), Loss Red (#ff4d4d)
+   BLOOMBERG TERMINAL & FINANCIAL SYSTEMS THEME — COMPLETE & ROBUST
    ========================================================================== */
 
 :root {
@@ -55,7 +53,7 @@ body.terminal-body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
-/* 1.1 Ticker Tape with Static Left Header & Overflow-hidden Track */
+/* 1.1 Ticker Tape with Static Left Header & Track */
 .ticker-wrap {
   height: 32px;
   background: #050607;
@@ -437,7 +435,99 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   4. DESK 02: OPEN SOURCE REPOSITORIES GRID
+   4. DESK 02: PRODUCTION EXPERIENCE LOGS
+   ------------------------------------------------------------- */
+.log-entry {
+  background: #060708;
+  border: 1px solid var(--bbg-border);
+  border-radius: 4px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid #111418;
+  padding-bottom: 12px;
+}
+.role-badge {
+  color: var(--bbg-green);
+  font-size: 10px;
+  font-weight: 700;
+}
+.role-badge-sub {
+  color: var(--bbg-cyan);
+  font-size: 10px;
+  font-weight: 700;
+}
+.log-role {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 700;
+}
+.log-inst {
+  font-size: 12px;
+  color: var(--bbg-amber);
+}
+.log-period {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: #111418;
+  padding: 3px 8px;
+  border-radius: 3px;
+  border: 1px solid var(--bbg-border);
+  white-space: nowrap;
+}
+
+.log-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.log-box {
+  background: #0b0d10;
+  border: 1px solid #15191e;
+  padding: 14px;
+  border-radius: 3px;
+}
+.box-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.box-title svg { color: var(--bbg-amber); }
+.log-box p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.log-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid #111418;
+  padding-top: 10px;
+}
+.tech-pill {
+  background: #111418;
+  border: 1px solid #1c222b;
+  color: #94a3b8;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* -------------------------------------------------------------
+   5. DESK 03: OPEN SOURCE REPOSITORIES GRID
    ------------------------------------------------------------- */
 .projects-grid-bbg {
   display: grid;
@@ -521,7 +611,7 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   5. DESK 03: INTERACTIVE MBS SIMULATOR
+   6. DESK 04: INTERACTIVE MBS SIMULATOR
    ------------------------------------------------------------- */
 .simulator-controls {
   background: #060708;
@@ -591,7 +681,7 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   6. DESK 04: SKILLS MATRIX
+   7. DESK 05: SKILLS MATRIX
    ------------------------------------------------------------- */
 .matrix-grid {
   display: grid;
@@ -634,7 +724,7 @@ body.terminal-body {
 }
 
 /* -------------------------------------------------------------
-   7. BUTTONS & FOOTER STATUS STRIP
+   8. BUTTONS & FOOTER STATUS STRIP
    ------------------------------------------------------------- */
 .btn-bbg {
   display: inline-flex;
@@ -717,11 +807,12 @@ body.terminal-body {
 .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
 
 /* -------------------------------------------------------------
-   8. RESPONSIVENESS
+   9. RESPONSIVENESS
    ------------------------------------------------------------- */
 @media (max-width: 900px) {
   .main-workstation { padding-top: 160px; }
   .grid-2col { grid-template-columns: 1fr; }
+  .log-grid { grid-template-columns: 1fr; }
   .cmd-box { min-width: 100%; }
 }
 @media (max-width: 650px) {

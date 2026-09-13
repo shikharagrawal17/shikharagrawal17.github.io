@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>SHIKHAR AGARWAL // BLOOMBERG TERMINAL & FINANCIAL SYSTEMS ARCHITECT</title>
-  <meta name="title" content="Shikhar Agarwal — Financial Distributed Systems & Quantitative AI" />
-  <meta name="description" content="Bloomberg & Institutional Financial Systems Portfolio of Shikhar Agarwal. Software Engineer specializing in Quantitative Finance, High-Performance Systems, Mutual Fund Analytics, and Spatial Indexing." />
+  <title>SHIKHAR AGARWAL // FINANCIAL SYSTEMS & DISTRIBUTED SYSTEMS ARCHITECT</title>
+  <meta name="title" content="Shikhar Agarwal — Software Engineer | Distributed Systems & Quantitative AI" />
+  <meta name="description" content="Bloomberg & Institutional Financial Systems Portfolio of Shikhar Agarwal. Software Engineer specializing in High-Throughput FX Infrastructure, Model Context Protocol (MCP), Mutual Fund Analytics, and Quantitative MBS Prepayment Modeling." />
   <meta name="author" content="Shikhar Agarwal" />
 
-  <!-- Monospace & Financial Fonts: JetBrains Mono, Fira Code, Inter -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Lucide Icons & Canvas Confetti -->
+  <!-- Lucide Icons & Confetti -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Financial Terminal Stylesheet -->
+  <!-- Core Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -34,7 +34,6 @@
       </div>
       <div class="ticker-track">
         <div class="ticker-content" id="ticker-strip">
-          <!-- Live Financial Items -->
           <span class="ticker-item"><span class="ticker-sym">NIFTY 50</span> <span class="val">25,356</span> <span class="up">▲ +0.42%</span></span>
           <span class="ticker-sep">|</span>
           <span class="ticker-item"><span class="ticker-sym">USD/INR</span> <span class="val">86.42</span> <span class="up">▲ +0.14%</span></span>
@@ -46,6 +45,10 @@
           <span class="ticker-item"><span class="ticker-sym">30Y MBS YIELD</span> <span class="val">6.820%</span> <span class="down">▼ -1.8 bps</span></span>
           <span class="ticker-sep">|</span>
           <span class="ticker-item"><span class="ticker-sym">SOFR FIXING</span> <span class="val">5.310%</span> <span class="neutral">● 0.0 bps</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">SYS LATENCY</span> <span class="val">&lt;100MS</span> <span class="highlight">99.9% UPTIME</span></span>
+          <span class="ticker-sep">|</span>
+          <span class="ticker-item"><span class="ticker-sym">RECON ENGINE</span> <span class="val">350+ FEEDS</span> <span class="highlight">&lt;1 HR RUNTIME</span></span>
           <span class="ticker-sep">|</span>
           <span class="ticker-item"><span class="ticker-sym">MF-ANALYZER</span> <span class="val">LOCAL CAS</span> <span class="highlight">SQLITE PARSER</span></span>
           <span class="ticker-sep">|</span>
@@ -78,7 +81,7 @@
           <!-- Interactive Bloomberg Command Line -->
           <div class="cmd-box">
             <span class="cmd-prompt">&gt;</span>
-            <input type="text" id="terminal-cmd-input" placeholder="Type PROJECTS, MBS, MF, SETTLE, CFA or HELP then <GO>" autocomplete="off" />
+            <input type="text" id="terminal-cmd-input" placeholder="Type EXP, PROJECTS, MBS, STACK, CFA, MSG then <GO>" autocomplete="off" />
             <button id="terminal-go-btn" class="btn-go">&lt;GO&gt;</button>
           </div>
         </div>
@@ -86,11 +89,12 @@
         <!-- Quick Function Keys (F1 - F6) -->
         <nav class="function-keys">
           <a href="#about" class="f-key" data-cmd="ABOUT"><span class="k">F1</span> ABOUT</a>
-          <a href="#projects" class="f-key" data-cmd="PROJECTS"><span class="k">F2</span> OPEN SOURCE</a>
-          <a href="#mbs-lab" class="f-key" data-cmd="MBS"><span class="k">F3</span> MBS LAB</a>
-          <a href="#skills" class="f-key" data-cmd="STACK"><span class="k">F4</span> STACK</a>
-          <a href="#education" class="f-key" data-cmd="CFA"><span class="k">F5</span> CFA/EDU</a>
-          <a href="#contact" class="f-key" data-cmd="MSG"><span class="k">F6</span> MSG &lt;GO&gt;</a>
+          <a href="#experience" class="f-key" data-cmd="EXP"><span class="k">F2</span> WORK EXP</a>
+          <a href="#projects" class="f-key" data-cmd="PROJECTS"><span class="k">F3</span> PROJECTS</a>
+          <a href="#mbs-lab" class="f-key" data-cmd="MBS"><span class="k">F4</span> MBS LAB</a>
+          <a href="#skills" class="f-key" data-cmd="STACK"><span class="k">F5</span> STACK</a>
+          <a href="#education" class="f-key" data-cmd="CFA"><span class="k">F6</span> CFA/EDU</a>
+          <a href="#contact" class="f-key" data-cmd="MSG"><span class="k">F7</span> MSG &lt;GO&gt;</a>
         </nav>
 
       </div>
@@ -98,14 +102,14 @@
 
   </header>
 
-  <!-- 3. MAIN TERMINAL WORKSTATION CONTAINER -->
+  <!-- 2. MAIN TERMINAL WORKSTATION CONTAINER -->
   <main class="terminal-container main-workstation">
 
-    <!-- 01: TERMINAL DESK OVERVIEW / HERO -->
+    <!-- DESK 01: PROFILE OVERVIEW (CLEAN FOCUS WITHOUT SPECIFIC EMPLOYER NAMES) -->
     <section id="about" class="terminal-window">
       <div class="window-header">
         <div class="window-title">
-          <i data-lucide="terminal" class="w-4 h-4"></i> DESK 01 // FINANCIAL SYSTEMS & QUANTITATIVE ENGINEERING PROFILE
+          <i data-lucide="terminal" class="w-4 h-4"></i> DESK 01 // FINANCIAL SYSTEMS & DISTRIBUTED ARCHITECTURE OVERVIEW
         </div>
         <div class="window-actions">
           <span class="badge-status">LIVE NODE: BENGALURU [IN]</span>
@@ -123,27 +127,35 @@
               SHIKHAR AGARWAL
             </h1>
             <p class="terminal-sub">
-              Software Engineer passionate about <span class="amber-text">Banking Infrastructure</span>, <strong>Quantitative Modeling (Fixed Income & MBS)</strong>, <strong>Shared Financial Ledgers</strong>, and <strong>High-Performance Systems</strong>.
+              Software Engineer specializing in <span class="amber-text">Foreign Exchange (FX) Money Movement</span>, <strong>24x6 High-Availability Distributed Systems</strong>, <strong>Quantitative Machine Learning</strong>, and <strong>Agentic AI (MCP)</strong>.
             </p>
             <p class="terminal-desc">
-              Bridging institutional economics, macro interest rate mechanics, and low-latency algorithmic architecture. Creator of open-source financial tools spanning CAS mutual fund ledger parsers, UPI multi-currency shared ledger systems, C-extension spatial indexing, and mortgage prepayment deep learning engines.
+              Bridging institutional capital markets mechanics with resilient, low-latency microservices. 2+ years of production experience scaling financial Systems of Record across 9 global branches (&lt;100ms latency), building automated reconciliation engines validating 350+ daily heterogeneous feeds, and authoring open-source wealth analytics and spatial indexing engines.
             </p>
 
             <div class="command-chips">
-              <span class="chip-cmd" onclick="runCommand('PROJECTS')">GITHUB REPOSITORIES &lt;GO&gt;</span>
-              <span class="chip-cmd" onclick="runCommand('MBS')">MBS SENSITIVITY LAB &lt;GO&gt;</span>
-              <span class="chip-cmd" onclick="runCommand('MF')">MUTUAL FUND ANALYZER &lt;GO&gt;</span>
-              <span class="chip-cmd" onclick="runCommand('CFA')">CFA & ACADEMICS &lt;GO&gt;</span>
+              <span class="chip-cmd" onclick="runCommand('EXP')">PRODUCTION EXPERIENCE &lt;GO&gt;</span>
+              <span class="chip-cmd" onclick="runCommand('PROJECTS')">GITHUB OPEN SOURCE &lt;GO&gt;</span>
+              <span class="chip-cmd" onclick="runCommand('MBS')">MBS QUANT LAB &lt;GO&gt;</span>
+              <span class="chip-cmd" onclick="runCommand('CFA')">CFA & EDUCATION &lt;GO&gt;</span>
             </div>
           </div>
 
           <!-- Financial Snapshot & Telemetry Card -->
           <div class="telemetry-panel">
-            <div class="telemetry-header">ENGINEERING TELEMETRY & OPEN SOURCE METRICS</div>
+            <div class="telemetry-header">ENGINEERING TELEMETRY & SYSTEM RATIOS</div>
             <table class="telemetry-table">
               <tr>
                 <td class="lbl">FOCUS DOMAINS</td>
-                <td class="val highlight">Fintech, Quant Finance, Systems & AI</td>
+                <td class="val highlight">Fintech, Quant Finance, Distributed Systems, AI</td>
+              </tr>
+              <tr>
+                <td class="lbl">CORE AVAILABILITY</td>
+                <td class="val green">24x6 High Availability (&lt;100ms Latency)</td>
+              </tr>
+              <tr>
+                <td class="lbl">SYSTEM SCALE</td>
+                <td class="val">9 Global Branches / 350+ Daily Feeds</td>
               </tr>
               <tr>
                 <td class="lbl">FINANCE CREDENTIAL</td>
@@ -151,7 +163,7 @@
               </tr>
               <tr>
                 <td class="lbl">ACADEMIC STANDING</td>
-                <td class="val green">COEP Pune (Rank 55 / Top 0.03% MHT-CET)</td>
+                <td class="val green">COEP Pune (Rank 55 / Top 0.03% in MHT-CET)</td>
               </tr>
               <tr>
                 <td class="lbl">CUMULATIVE CGPA</td>
@@ -159,15 +171,7 @@
               </tr>
               <tr>
                 <td class="lbl">CLOUD CREDENTIAL</td>
-                <td class="val">Google Cloud Certified (Core Infra)</td>
-              </tr>
-              <tr>
-                <td class="lbl">CORE REPOSITORIES</td>
-                <td class="val green">mf-analyzer, BharatDues, PyQuadtree, PrepIt</td>
-              </tr>
-              <tr>
-                <td class="lbl">PRIMARY STACK</td>
-                <td class="val">Java, Python, C, C++, SQL, PyTorch</td>
+                <td class="val highlight">Google Cloud Certified (Core Services)</td>
               </tr>
             </table>
 
@@ -189,15 +193,109 @@
     </section>
 
 
-    <!-- 02: FEATURED GITHUB OPEN-SOURCE PROJECTS (FROM REPOSITORIES) -->
+    <!-- DESK 02: PRODUCTION EXPERIENCE TIMELINE (WELLS FARGO DETAILS IN ITS DEDICATED SECTION) -->
+    <section id="experience" class="terminal-window">
+      <div class="window-header">
+        <div class="window-title">
+          <i data-lucide="briefcase" class="w-4 h-4"></i> DESK 02 // PROFESSIONAL PRODUCTION WORK EXPERIENCE
+        </div>
+        <div class="window-actions">
+          <span class="badge-tag">WELLS FARGO PRODUCTION LOGS</span>
+        </div>
+      </div>
+
+      <div class="window-body space-y-6">
+        
+        <!-- Job 1: Software Engineer -->
+        <div class="log-entry">
+          <div class="log-header">
+            <div>
+              <span class="role-badge">ACTIVE PRODUCTION ROLE</span>
+              <h2 class="log-role">Software Engineer — FX Technology & Payment Platforms</h2>
+              <div class="log-inst">Wells Fargo • Bengaluru, India</div>
+            </div>
+            <div class="log-period">AUG 2024 – PRESENT</div>
+          </div>
+
+          <div class="log-grid">
+            <div class="log-box">
+              <div class="box-title"><i data-lucide="zap" class="w-3.5 h-3.5"></i> 24x6 Continuous Availability Architecture</div>
+              <p>Modernized critical 24x6 continuous availability by integrating BSYS/BSRB Start API hooks and tuning batch hint parameters, eliminating production lockouts during global market transitions.</p>
+            </div>
+            
+            <div class="log-box">
+              <div class="box-title"><i data-lucide="globe" class="w-3.5 h-3.5"></i> Global System of Record (SoR) Scaling</div>
+              <p>Maintained and scaled high-concurrency multi-currency System of Record across 9 global branches while preserving sub-100ms response latencies and zero data divergence.</p>
+            </div>
+
+            <div class="log-box">
+              <div class="box-title"><i data-lucide="database" class="w-3.5 h-3.5"></i> Automated Reconciliation Engine (350+ Daily Feeds)</div>
+              <p>Engineered automated validation pipelines reconciling 350+ daily heterogeneous data feeds (MB-to-GB scale), reducing audit cycles from weeks of manual effort to under 1 hour.</p>
+            </div>
+
+            <div class="log-box">
+              <div class="box-title"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Agentic Model Context Protocol (MCP) AI</div>
+              <p>Architected custom Model Context Protocol (MCP) servers (Oracle OPICS MCP & Deal Netting MCP) to securely connect LLM agent workflows with core banking databases with parameterized safety guardrails.</p>
+            </div>
+          </div>
+
+          <div class="log-tech">
+            <span class="tech-pill">JAVA</span>
+            <span class="tech-pill">SPRING BOOT</span>
+            <span class="tech-pill">PYTHON</span>
+            <span class="tech-pill">ORACLE SQL</span>
+            <span class="tech-pill">DISTRIBUTED SYSTEMS</span>
+            <span class="tech-pill">MODEL CONTEXT PROTOCOL (MCP)</span>
+            <span class="tech-pill">IBM MQ</span>
+            <span class="tech-pill">SECURITY (SEV-1 TRIAGE)</span>
+          </div>
+        </div>
+
+        <!-- Job 2: Quant ML Intern -->
+        <div class="log-entry">
+          <div class="log-header">
+            <div>
+              <span class="role-badge-sub">QUANTITATIVE ML INTERNSHIP</span>
+              <h2 class="log-role">Software Engineering Intern — Quantitative Machine Learning</h2>
+              <div class="log-inst">Wells Fargo • Bengaluru, India</div>
+            </div>
+            <div class="log-period">MAY 2023 – JUL 2023</div>
+          </div>
+
+          <div class="log-grid">
+            <div class="log-box">
+              <div class="box-title"><i data-lucide="trending-up" class="w-3.5 h-3.5"></i> Quantitative MBS Prepayment Forecasting</div>
+              <p>Engineered an end-to-end Long Short-Term Memory (LSTM) time-series forecasting pipeline modeling Mortgage-Backed Securities (MBS) prepayment speeds (CPR) and fixed-income duration risk.</p>
+            </div>
+
+            <div class="log-box">
+              <div class="box-title"><i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i> Macroeconomic Sensitivity Modeling</div>
+              <p>Built feature extraction pipelines across historical yield curves, mortgage rates, and refinancing incentives, outperforming standard linear econometric models.</p>
+            </div>
+          </div>
+
+          <div class="log-tech">
+            <span class="tech-pill">PYTHON</span>
+            <span class="tech-pill">PYTORCH</span>
+            <span class="tech-pill">LSTM NETWORKS</span>
+            <span class="tech-pill">FIXED INCOME DURATION</span>
+            <span class="tech-pill">TIME-SERIES ML</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- DESK 03: FEATURED PROJECTS & GITHUB REPOSITORIES -->
     <section id="projects" class="terminal-window">
       <div class="window-header">
         <div class="window-title">
-          <i data-lucide="layers" class="w-4 h-4"></i> DESK 02 // PUBLIC GITHUB OPEN-SOURCE REPOSITORIES
+          <i data-lucide="layers" class="w-4 h-4"></i> DESK 03 // FEATURED PROJECTS & OPEN SOURCE REPOSITORIES
         </div>
         <div class="window-actions">
           <a href="https://github.com/shikharagrawal17/" target="_blank" rel="noopener noreferrer" class="link-action">
-            VIEW GITHUB PROFILE <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            GITHUB PROFILE <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
       </div>
@@ -283,17 +381,42 @@
             </div>
           </div>
 
-          <!-- Repo 4: MBS Prepayment Model -->
+          <!-- Project 4: AI Financial Intelligence & MCP Query Layer -->
           <div class="p-card">
             <div class="p-header">
-              <span class="p-category">QUANTITATIVE FINANCE & ML</span>
+              <span class="p-category">AGENTIC AI // MCP</span>
               <a href="https://github.com/shikharagrawal17/" target="_blank" rel="noopener noreferrer" class="p-icon-link">
                 <i data-lucide="github"></i>
               </a>
             </div>
+            <h3 class="p-title">Context-Aware AI Financial Intelligence & Query Layer</h3>
+            <p class="p-desc">
+              Natural language interface translating business logic into parameterized, optimized SQL with sub-second semantic caching, schema introspection, and Model Context Protocol (MCP) tool bindings.
+            </p>
+            <div class="p-tags">
+              <span>Python</span>
+              <span>Model Context Protocol</span>
+              <span>LLM Orchestration</span>
+              <span>SQL</span>
+            </div>
+            <div class="p-footer-link">
+              <a href="https://github.com/shikharagrawal17/" target="_blank" rel="noopener noreferrer" class="repo-link">
+                View Architecture on GitHub <i data-lucide="arrow-right" class="w-3 h-3"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 5: MBS Prepayment Model -->
+          <div class="p-card">
+            <div class="p-header">
+              <span class="p-category">QUANTITATIVE FINANCE & ML</span>
+              <a href="#mbs-lab" class="p-icon-link">
+                <i data-lucide="sliders"></i>
+              </a>
+            </div>
             <h3 class="p-title">MBS Prepayment & Duration Risk Predictor</h3>
             <p class="p-desc">
-              Predictive deep learning LSTM model quantifying Mortgage-Backed Securities (MBS) prepayment speeds (CPR) and fixed-income duration risk under non-linear interest rate yield curve shocks and refinancing incentive shifts.
+              Predictive deep learning LSTM model quantifying Mortgage-Backed Securities (MBS) prepayment speeds (CPR) and fixed-income duration risk under non-linear interest rate yield curve shocks.
             </p>
             <div class="p-tags">
               <span>Python</span>
@@ -309,7 +432,7 @@
             </div>
           </div>
 
-          <!-- Repo 5: PrepIt -->
+          <!-- Repo 6: PrepIt -->
           <div class="p-card">
             <div class="p-header">
               <span class="p-category">COMMUNITY PLATFORM</span>
@@ -317,7 +440,7 @@
                 <i data-lucide="github"></i>
               </a>
             </div>
-            <h3 class="p-title">PrepIt — Interview & Placement Prep Engine</h3>
+            <h3 class="p-title">PrepIt — Interview & Placement Prep Platform</h3>
             <p class="p-desc">
               Native Android application with Firebase Realtime Database and Python REST backend for university students preparing for company recruitment rounds, crowdsourcing verified questions and placement statistics.
             </p>
@@ -326,37 +449,10 @@
               <span>Android SDK</span>
               <span>Firebase</span>
               <span>Python REST</span>
-              <span>Material Design</span>
             </div>
             <div class="p-footer-link">
               <a href="https://github.com/shikharagrawal17/PrepIt" target="_blank" rel="noopener noreferrer" class="repo-link">
                 github.com/shikharagrawal17/PrepIt <i data-lucide="arrow-right" class="w-3 h-3"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Repo 6: Sentimental Analysis ML -->
-          <div class="p-card">
-            <div class="p-header">
-              <span class="p-category">NLP & MACHINE LEARNING</span>
-              <a href="https://github.com/shikharagrawal17/Sentimental-Analysis-of-Amazon-Reviews" target="_blank" rel="noopener noreferrer" class="p-icon-link">
-                <i data-lucide="github"></i>
-              </a>
-            </div>
-            <h3 class="p-title">NLP Sentiment Analysis & Review Intelligence</h3>
-            <p class="p-desc">
-              Machine learning pipeline for text classification and sentiment prediction on consumer review datasets, evaluating TF-IDF feature extraction, word stemming, and multiple classifier models.
-            </p>
-            <div class="p-tags">
-              <span>Python</span>
-              <span>NLP / TF-IDF</span>
-              <span>Scikit-Learn</span>
-              <span>Text Classification</span>
-              <span>Jupyter</span>
-            </div>
-            <div class="p-footer-link">
-              <a href="https://github.com/shikharagrawal17/Sentimental-Analysis-of-Amazon-Reviews" target="_blank" rel="noopener noreferrer" class="repo-link">
-                github.com/shikharagrawal17/... <i data-lucide="arrow-right" class="w-3 h-3"></i>
               </a>
             </div>
           </div>
@@ -366,11 +462,11 @@
     </section>
 
 
-    <!-- 03: INTERACTIVE MBS QUANTITATIVE SIMULATION LAB -->
+    <!-- DESK 04: INTERACTIVE MBS QUANTITATIVE SIMULATION LAB -->
     <section id="mbs-lab" class="terminal-window">
       <div class="window-header">
         <div class="window-title">
-          <i data-lucide="sliders" class="w-4 h-4"></i> DESK 03 // QUANT LAB: MBS PREPAYMENT & DURATION MODEL
+          <i data-lucide="sliders" class="w-4 h-4"></i> DESK 04 // QUANT LAB: MBS PREPAYMENT & DURATION MODEL
         </div>
         <div class="window-actions">
           <span class="badge-status">INTERACTIVE SIMULATION</span>
@@ -444,11 +540,11 @@
     </section>
 
 
-    <!-- 04: TECHNICAL COMPETENCY MATRIX -->
+    <!-- DESK 05: TECHNICAL COMPETENCY MATRIX -->
     <section id="skills" class="terminal-window">
       <div class="window-header">
         <div class="window-title">
-          <i data-lucide="cpu" class="w-4 h-4"></i> DESK 04 // SYSTEM CAPABILITIES & DOMAIN MATRIX
+          <i data-lucide="cpu" class="w-4 h-4"></i> DESK 05 // SYSTEM CAPABILITIES & DOMAIN MATRIX
         </div>
         <div class="window-actions">
           <span class="badge-tag">FINTECH & DISTRIBUTED SYSTEMS</span>
@@ -472,7 +568,7 @@
           <div class="matrix-col">
             <div class="m-col-title">FINANCIAL & DISTRIBUTED SYSTEMS</div>
             <ul class="m-list">
-              <li><span>High Availability Architecture</span> <span class="tag-sm green">CORE</span></li>
+              <li><span>24x6 High Availability</span> <span class="tag-sm green">CORE</span></li>
               <li><span>Shared Ledgers & UPI Flows</span> <span class="tag-sm amber-text">FINTECH</span></li>
               <li><span>Microservices & REST APIs</span> <span class="tag-sm">PROD</span></li>
               <li><span>Event-Driven & Messaging</span> <span class="tag-sm">PROD</span></li>
@@ -507,11 +603,11 @@
     </section>
 
 
-    <!-- 05: EDUCATION, CREDENTIALS & LEADERSHIP -->
+    <!-- DESK 06: EDUCATION, CREDENTIALS & LEADERSHIP -->
     <section id="education" class="terminal-window">
       <div class="window-header">
         <div class="window-title">
-          <i data-lucide="award" class="w-4 h-4"></i> DESK 05 // ACADEMICS, CREDENTIALS & LEADERSHIP
+          <i data-lucide="award" class="w-4 h-4"></i> DESK 06 // ACADEMICS, CREDENTIALS & LEADERSHIP
         </div>
         <div class="window-actions">
           <span class="badge-status">DISTINGUISHED HONORS</span>
@@ -552,11 +648,11 @@
     </section>
 
 
-    <!-- 06: TERMINAL MESSAGE TRANSMISSION / CONTACT -->
+    <!-- DESK 07: TERMINAL MESSAGE TRANSMISSION / CONTACT -->
     <section id="contact" class="terminal-window">
       <div class="window-header">
         <div class="window-title">
-          <i data-lucide="send" class="w-4 h-4"></i> DESK 06 // TRANSMIT MESSAGE &lt;GO&gt;
+          <i data-lucide="send" class="w-4 h-4"></i> DESK 07 // TRANSMIT MESSAGE &lt;GO&gt;
         </div>
         <div class="window-actions">
           <span class="badge-status">CHANNEL OPEN</span>
@@ -593,7 +689,7 @@
 
   </main>
 
-  <!-- 4. BLOOMBERG TERMINAL FOOTER STATUS STRIP -->
+  <!-- 3. BLOOMBERG TERMINAL FOOTER STATUS STRIP -->
   <footer class="terminal-footer">
     <div class="terminal-container flex items-center justify-between text-[11px] text-slate-400">
       <div class="flex items-center gap-3">
